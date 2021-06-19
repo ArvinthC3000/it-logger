@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Preloader from '../layout/Preloader';
 import LogItem from './LogItem';
 
 const Logs = () => {
@@ -18,7 +19,7 @@ const Logs = () => {
     setLoading(false);
   };
 
-  if (loading) return <h4>Loading...</h4>;
+  if (loading) return <Preloader />;
   return (
     <ul className='collection with-header'>
       <li className='collection-header'>
