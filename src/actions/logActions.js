@@ -4,6 +4,8 @@ import {
   LOGS_ERROR,
   ADD_LOGS,
   DELETE_LOGS,
+  SET_CURRENT,
+  CLEAR_CURRENT,
 } from './type';
 
 // export const getLogs = () => {
@@ -86,6 +88,22 @@ export const deleteLogs = id => async dispatch => {
     });
   }
 };
+
+// Set Current log
+export const setCurrent = log => {
+  return {
+    type: SET_CURRENT,
+    payload: log,
+  };
+};
+
+// Clear Current log
+export const clearCurrent = log => {
+  return {
+    type: CLEAR_CURRENT,
+  };
+};
+
 // Set loadingto true
 export const setLoading = () => {
   return {
