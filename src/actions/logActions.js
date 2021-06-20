@@ -6,6 +6,7 @@ import {
   DELETE_LOGS,
   SET_CURRENT,
   CLEAR_CURRENT,
+  UPDATE_LOGS,
 } from './type';
 
 // export const getLogs = () => {
@@ -80,6 +81,32 @@ export const deleteLogs = id => async dispatch => {
     dispatch({
       type: DELETE_LOGS,
       payload: id,
+    });
+  } catch (err) {
+    dispatch({
+      type: LOGS_ERROR,
+      payload: err.response.data,
+    });
+  }
+};
+
+// Update logs from sersver
+export const updateLog = log => async dispatch => {
+  try {
+    setLoading();
+
+    const res = await fetch(`/logs/${log.id}`, {
+      method: 'PUT',
+      body: JSON.stringify(log),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = res.json();
+
+    dispatch({
+      type: UPDATE_LOGS,
+      payload: data,
     });
   } catch (err) {
     dispatch({
