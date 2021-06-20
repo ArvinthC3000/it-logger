@@ -22,7 +22,16 @@ const EditLogModal = ({ current, updateLog }) => {
     if (!message || !tech) {
       M.toast({ html: 'Please enter a message and tech' });
     } else {
-      console.log(message, tech, attention);
+      const updatedLog = {
+        id: current.id,
+        message,
+        attention,
+        tech,
+        date: new Date(),
+      };
+
+      updateLog(updatedLog);
+      M.toast({ html: `Log updated by ${tech}` });
 
       //   Clear fields
       setMessage('');
