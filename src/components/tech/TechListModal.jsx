@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import TechItem from './TechItem';
 import PropTypes from 'prop-types';
@@ -7,6 +7,7 @@ import { getTechs } from '../../actions/techAction';
 const TechListModal = ({ getTechs, tech: { techs, loading } }) => {
   useEffect(() => {
     getTechs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //   if (loading) return <Preloader />;
